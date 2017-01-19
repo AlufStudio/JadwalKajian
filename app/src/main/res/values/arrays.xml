@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_kota">
+        <item>Bandung</item>
+        <item>Jakarta</item>
+        <item>Purbalingga</item>
+        <item>Yogyakarta</item>
+    </string-array>
+
+    <string-array name="tipe_kajian">
+        <item>Tematik</item>
+        <item>Rutin</item>
+        <item>Muslimah</item>
+    </string-array>
+</resources>

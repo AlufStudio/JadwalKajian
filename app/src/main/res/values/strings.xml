@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Jadwal Kajian</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_input">InputActivity</string>
+    <string name="title_activity_login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_daftar_text">Belum punya akun? Daftar sekarang</string>
+    <string name="title_activity_main">Jadwal Kajian</string>
+    <string name="title_activity_setting">Pengaturan</string>
+    <string name="title_activity_add_kajian">Buat Jadwal Kajian</string>
+    <string name="title_activity_search">Pencarian</string>
+</resources>
