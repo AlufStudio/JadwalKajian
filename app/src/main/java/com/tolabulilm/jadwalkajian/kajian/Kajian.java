@@ -11,7 +11,9 @@ public class Kajian {
     private long time;
     private String place;
     private String city;
+    private String type;
     private String address;
     private String status;
     private String hijri;
+    private String contactNumber;
 }

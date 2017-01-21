@@ -11,4 +11,5 @@
     <string name="title_activity_setting">Pengaturan</string>
     <string name="title_activity_add_kajian">Buat Jadwal Kajian</string>
     <string name="title_activity_search">Pencarian</string>
+    <string name="title_activity_admin">Halaman Admin</string>
 </resources>

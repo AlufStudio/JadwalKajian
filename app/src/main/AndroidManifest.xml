@@ -44,6 +44,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tolabulilm.jadwalkajian.MainActivity" />
         </activity>
+        <activity
+            android:name=".user.AdminActivity"
+            android:label="@string/title_activity_admin"
+            android:parentActivityName=".setting.SettingActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tolabulilm.jadwalkajian.setting.SettingActivity" />
+        </activity>
     </application>
 
 </manifest>
