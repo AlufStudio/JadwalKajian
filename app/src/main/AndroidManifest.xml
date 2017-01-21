@@ -19,17 +19,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".user.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".setting.SettingActivity"
             android:label="Menu"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".user.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tolabulilm.jadwalkajian.MainActivity" />
+                android:value="com.tolabulilm.jadwalkajian.user.MainActivity" />
         </activity>
         <activity
             android:name=".kajian.AddKajianActivity"
@@ -38,11 +38,11 @@
         <activity
             android:name=".kajian.SearchActivity"
             android:label="@string/title_activity_search"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".user.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tolabulilm.jadwalkajian.MainActivity" />
+                android:value="com.tolabulilm.jadwalkajian.user.MainActivity" />
         </activity>
         <activity
             android:name=".user.AdminActivity"

@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian;
+package com.tolabulilm.jadwalkajian.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.tolabulilm.jadwalkajian.R;
 import com.tolabulilm.jadwalkajian.kajian.SearchActivity;
 import com.tolabulilm.jadwalkajian.setting.SettingActivity;
 

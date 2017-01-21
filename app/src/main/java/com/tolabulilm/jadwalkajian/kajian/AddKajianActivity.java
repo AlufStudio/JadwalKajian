@@ -22,6 +22,7 @@ public class AddKajianActivity extends AppCompatActivity {
 
     private Button dateButton;
     private Button hourButton;
+    private Button submitButton;
 
     private String ustadz;
     private String title;
@@ -38,6 +39,12 @@ public class AddKajianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_kajian);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     private void checkEmptyInput() {
@@ -48,5 +55,24 @@ public class AddKajianActivity extends AppCompatActivity {
         } else {
             inputIsEmpty = false;
         }
+    }
+
+    private void getPrimaryInputData() {
+        ustadz = inputUstadz.getText().toString();
+        title = inputTitle.getText().toString();
+        place = inputPlace.getText().toString();
+    }
+
+    private void initView() {
+        inputUstadz = (EditText)findViewById(R.id.kajian_input_ustadz);
+        inputTitle = (EditText)findViewById(R.id.kajian_input_title);
+        inputPlace = (EditText)findViewById(R.id.kajian_input_place);
+        inputAddress = (EditText)findViewById(R.id.kajian_input_address);
+        inputHijri = (EditText)findViewById(R.id.kajian_input_hijri);
+        inputContactNumber = (EditText)findViewById(R.id.kajian_input_contactnumber);
+
+        dateButton = (Button)findViewById(R.id.kajian_button_date);
+        hourButton = (Button)findViewById(R.id.kajian_button_hour);
+        submitButton = (Button)findViewById(R.id.kajian_button_submit);
     }
 }

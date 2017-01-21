@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.tolabulilm.jadwalkajian.R;
 import com.tolabulilm.jadwalkajian.kajian.AddKajianActivity;
+import com.tolabulilm.jadwalkajian.user.AdminActivity;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -50,7 +51,7 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 2 : startActivity(new Intent(getApplicationContext(), AddKajianActivity.class));
+                    case 2 : startActivity(new Intent(getApplicationContext(), AdminActivity.class));
                 }
             }
         });
