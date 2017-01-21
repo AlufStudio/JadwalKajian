@@ -178,7 +178,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Tanggal hijriyah"
+                            android:hint="Tanggal hijriyah (opsional)"
                             android:id="@+id/kajian_input_hijri"/>
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
