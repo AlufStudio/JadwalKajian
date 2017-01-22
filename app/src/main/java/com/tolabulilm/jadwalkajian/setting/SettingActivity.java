@@ -52,6 +52,9 @@ public class SettingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 2 : startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+                        break;
+                    case 3 : startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+                        break;
                 }
             }
         });

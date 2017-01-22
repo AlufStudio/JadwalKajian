@@ -11,14 +11,40 @@ import com.tolabulilm.jadwalkajian.R;
 
 public class AboutActivity extends AppCompatActivity {
 
+    private TextView aboutContent;
+    private String content;
+    private DatabaseReference mRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        
+        mRef = FirebaseDatabase.getInstance().getReference("jadwal-kajian");
+        initView();
+        initDatabase();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    private void initView() {
+        aboutContent = (TextView)findViewById(R.id.about_content);
+    }
+
+    private void initDatabase() {
+        DatabaseReference aboutRef = mRef.child("about").child("content");
+        ValueEventListener contentListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                content = dataSnapshot.getValue(String.class);
+                aboutContent.setText(content);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        }
+        aboutRef.addListenerForSingleValueEvent(contentListener);
+    }
 }

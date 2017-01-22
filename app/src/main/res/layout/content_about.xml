@@ -8,10 +8,18 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.tolabulilm.jadwalkajian.setting.AboutActivity"
     tools:showIn="@layout/activity_about"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Jadwal Kajian"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textColor="@color/black" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="content"
+        android:textColor="@color/black"
+        android:id="@+id/about_content"/>
 </LinearLayout>
