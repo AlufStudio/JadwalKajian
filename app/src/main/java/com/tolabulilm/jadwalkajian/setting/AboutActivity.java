@@ -6,7 +6,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tolabulilm.jadwalkajian.R;
 
 public class AboutActivity extends AppCompatActivity {
@@ -38,13 +45,14 @@ public class AboutActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 content = dataSnapshot.getValue(String.class);
                 aboutContent.setText(content);
+                Toast.makeText(AboutActivity.this, dataSnapshot.getValue(String.class), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        }
+        };
         aboutRef.addListenerForSingleValueEvent(contentListener);
     }
 }
