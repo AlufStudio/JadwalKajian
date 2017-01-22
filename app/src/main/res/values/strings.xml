@@ -12,4 +12,5 @@
     <string name="title_activity_add_kajian">Buat Jadwal Kajian</string>
     <string name="title_activity_search">Pencarian</string>
     <string name="title_activity_admin">Halaman Admin</string>
+    <string name="title_activity_about">Tentang Aplikasi</string>
 </resources>

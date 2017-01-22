@@ -18,11 +18,10 @@ public class Kajian {
     private String contactNumber;
 
     public Kajian() {
-
     }
 
     public Kajian(String id, String ustadz, String title, String place, long time,
-    String city, String type) {
+                  String city, String type) {
         this.id = id;
         this.ustadz = ustadz;
         this.title = title;
@@ -90,5 +89,33 @@ public class Kajian {
 
     public long getTime() {
         return this.time;
+    }
+
+    public String getPlace() {
+        return this.place;
+    }
+
+    public String getCity() {
+        return this.city;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public String getHijri() {
+        return this.hijri;
+    }
+
+    public String getContactNumber() {
+        return this.contactNumber;
     }
 }
