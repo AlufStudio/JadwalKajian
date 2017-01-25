@@ -16,19 +16,18 @@ import com.tolabulilm.jadwalkajian.setting.SettingActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DatabaseReference mRef;
+    private DatabaseReference kajianRef;
+    private FirebaseUser fireUser;
+    private FirebaseAuth mAuth;
+    private FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
-            }
-        });
     }
 
     @Override
@@ -56,5 +55,24 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finishAffinity();
+    }
+
+    private void initView() {
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+    }
+
+    private void handleOnClick() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+            }
+        });
+    }
+
+    private void initFirebase() {
+        mAuth = FirebaseAuth.getInstance();
+        mRef = FirebaseDatabase.getInstance().getReference("jadwal-kajian");
+        kajianRef = mRef.child("kajian");
     }
 }
