@@ -30,29 +30,27 @@ public class AboutActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mRef = FirebaseDatabase.getInstance().getReference("jadwal-kajian");
         initView();
-        initDatabase();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initView() {
         aboutContent = (TextView)findViewById(R.id.about_content);
+        setContent();
     }
 
-    private void initDatabase() {
+    private void setContent() {
         DatabaseReference aboutRef = mRef.child("about").child("content");
-        ValueEventListener contentListener = new ValueEventListener() {
+        aboutRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 content = dataSnapshot.getValue(String.class);
                 aboutContent.setText(content);
-                Toast.makeText(AboutActivity.this, dataSnapshot.getValue(String.class), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        };
-        aboutRef.addListenerForSingleValueEvent(contentListener);
+        })
     }
 }
