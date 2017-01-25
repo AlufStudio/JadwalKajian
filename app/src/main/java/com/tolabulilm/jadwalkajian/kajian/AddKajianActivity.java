@@ -61,6 +61,7 @@ public class AddKajianActivity extends AppCompatActivity {
         place = inputPlace.getText().toString();
     }
 
+    //mengambil informasi tambahan. harus dihandle jika tidak semua informasi diisi
     private void getAdditionalInputData() {
         address = inputAddress.getText().toString();
         hijri = inputHijri.getText().toString();

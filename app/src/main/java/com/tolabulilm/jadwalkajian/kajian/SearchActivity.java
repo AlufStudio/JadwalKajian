@@ -27,16 +27,12 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        handleOnClick();
         initView();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    //menu di toolbar kanan selalu ada di beberapa activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -50,11 +46,12 @@ public class SearchActivity extends AppCompatActivity {
             case R.id.menu_setting:
                 goToSettingActivity();
                 break;
-
         }
         return true;
     }
 
+    //dibuat method sendiri agar lebih fleksibel jika membutuhkan intent
+    //untuk activity tertentu
     private void goToSettingActivity() {
         Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
         startActivity(intent);
@@ -71,5 +68,15 @@ public class SearchActivity extends AppCompatActivity {
         adapterTipe.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKota.setAdapter(adapterKota);
         spinnerTipe.setAdapter(adapterTipe);
+    }
+
+    private void handleOnClick() {
+        //back button di toolbar diklik agar setara dengan back button di bawah
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 }
