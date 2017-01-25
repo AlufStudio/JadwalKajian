@@ -25,4 +25,9 @@
         android:text="content"
         android:textColor="@color/black"
         android:id="@+id/about_content"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lisensi"
+        android:id="@+id/about_license_button" />
 </LinearLayout>

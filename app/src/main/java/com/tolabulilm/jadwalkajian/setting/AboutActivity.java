@@ -21,6 +21,7 @@ public class AboutActivity extends AppCompatActivity {
     private TextView aboutContent;
     private String content;
     private DatabaseReference mRef;
+    private Button licenseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,11 @@ public class AboutActivity extends AppCompatActivity {
 
     private void initView() {
         aboutContent = (TextView)findViewById(R.id.about_content);
+        licenseButton = (Button)findViewById(R.id.about_license_button);
         setContent();
     }
 
+    //content tulisan di activity bisa diubah sesuai data di firebase
     private void setContent() {
         DatabaseReference aboutRef = mRef.child("about").child("content");
         aboutRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -52,5 +55,14 @@ public class AboutActivity extends AppCompatActivity {
 
             }
         })
+    }
+
+    private void handleOnClick() {
+        licenseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //go to license activity
+            }
+        });
     }
 }

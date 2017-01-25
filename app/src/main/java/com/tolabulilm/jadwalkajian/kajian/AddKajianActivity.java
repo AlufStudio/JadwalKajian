@@ -83,7 +83,7 @@ public class AddKajianActivity extends AppCompatActivity {
 
     private void handleOnClick() {
         //ketika submit minimal harus mengisi informasi dasar
-        submitButton.sestOnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -92,7 +92,7 @@ public class AddKajianActivity extends AppCompatActivity {
 
         //meminta input tanggal. tanggal tidak boleh kurang dari tanggal sekarang
         //untuk kajian rutin, boleh tidak menginput tanggal
-        dateButton.sestOnClickListener(new View.OnClickListener() {
+        dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -100,7 +100,7 @@ public class AddKajianActivity extends AppCompatActivity {
         });
 
         //meminta input waktu
-        hourButton.sestOnClickListener(new View.OnClickListener() {
+        hourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
