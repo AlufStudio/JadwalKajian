@@ -39,14 +39,11 @@ public class AddKajianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_kajian);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+
     }
 
+    //pengecekan empty dibagi menjadi dua bagian yaitu input informasi dasar
+    //dan input informasi tambahan
     private void checkEmptyInput() {
         if(inputUstadz.getText().toString().isEmpty() || inputTitle.getText().toString().isEmpty()) {
             inputIsEmpty = true;
@@ -57,10 +54,17 @@ public class AddKajianActivity extends AppCompatActivity {
         }
     }
 
+    //mengambil informasi dasar
     private void getPrimaryInputData() {
         ustadz = inputUstadz.getText().toString();
         title = inputTitle.getText().toString();
         place = inputPlace.getText().toString();
+    }
+
+    private void getAdditionalInputData() {
+        address = inputAddress.getText().toString();
+        hijri = inputHijri.getText().toString();
+        contactNumber = inputContactNumber.getText().toString();
     }
 
     private void initView() {
@@ -74,5 +78,40 @@ public class AddKajianActivity extends AppCompatActivity {
         dateButton = (Button)findViewById(R.id.kajian_button_date);
         hourButton = (Button)findViewById(R.id.kajian_button_hour);
         submitButton = (Button)findViewById(R.id.kajian_button_submit);
+    }
+
+    private void handleOnClick() {
+        //ketika submit minimal harus mengisi informasi dasar
+        submitButton.sestOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //meminta input tanggal. tanggal tidak boleh kurang dari tanggal sekarang
+        //untuk kajian rutin, boleh tidak menginput tanggal
+        dateButton.sestOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //meminta input waktu
+        hourButton.sestOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //back button kiri atas di toolbar
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 }
