@@ -28,4 +28,27 @@ public class KajianViewHolder extends RecyclerView.ViewHolder {
         address = (TextView)itemView.findViewById(R.id.card_kajian_address);
         contactNumber = (TextView)itemView.findViewById(R.id.card_kajian_contactnumber);
     }
+
+    public void setPrimaryInfo(String ustadz, String title, String place, String hijri, long millis) {
+        this.ustadz.setText(ustadz);
+        this.title.setText(title);
+        this.place.setText(place);
+        String date;
+        Calendar c = Calendar.getInstance();
+        c.setTimeMillis(millis);
+        //gunakan simple date format untuk mendapatkan tanggal dari calendar;
+    }
+
+    public void getAddButton() {
+        return this.addButton;
+    }
+
+    public void getMoreButton() {
+        return this.moreButton;
+    }
+
+    public void setAddtitionalInfo(String address, String contactNumber) {
+        this.address.setText(address);
+        this.contactNumber.setText(contactNumber);
+    }
 }
