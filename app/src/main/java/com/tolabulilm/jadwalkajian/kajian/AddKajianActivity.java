@@ -19,6 +19,7 @@ public class AddKajianActivity extends AppCompatActivity {
     private EditText inputAddress;
     private EditText inputHijri;
     private EditText inputContactNumber;
+    private Toolbar toolbar;
 
     private Button dateButton;
     private Button hourButton;
@@ -79,6 +80,7 @@ public class AddKajianActivity extends AppCompatActivity {
         dateButton = (Button)findViewById(R.id.kajian_button_date);
         hourButton = (Button)findViewById(R.id.kajian_button_hour);
         submitButton = (Button)findViewById(R.id.kajian_button_submit);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
     }
 
     private void handleOnClick() {

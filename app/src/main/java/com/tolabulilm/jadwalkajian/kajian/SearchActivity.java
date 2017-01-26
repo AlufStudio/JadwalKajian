@@ -20,12 +20,13 @@ public class SearchActivity extends AppCompatActivity {
 
     private Spinner spinnerKota;
     private Spinner spinnerTipe;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         handleOnClick();
         initView();

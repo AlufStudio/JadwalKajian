@@ -1,5 +1,12 @@
 package com.tolabulilm.jadwalkajian.user;
 
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.tolabulilm.jadwalkajian.R;
+
 public class KajianViewHolder extends RecyclerView.ViewHolder {
     private final TextView ustadz;
     private final TextView title;
