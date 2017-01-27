@@ -48,22 +48,27 @@
             android:textColor="@color/white"
             android:backgroundTint="@color/white"
             android:id="@+id/login_input_password"
-            android:fontFamily="Roboto"/>
+            android:fontFamily="Roboto"
+            android:layout_marginBottom="20dp"/>
     </android.support.design.widget.TextInputLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_progress_bar"
+        android:visibility="gone"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:id="@+id/login_button"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:textColor="@color/white"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="@color/white"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:textColor="@color/white"
         android:id="@+id/login_daftar"
+        android:layout_marginTop="20dp"
         android:text="@string/login_daftar_text"/>
 </LinearLayout>

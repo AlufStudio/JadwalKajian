@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.tolabulilm.jadwalkajian.R;
 import com.tolabulilm.jadwalkajian.kajian.AddKajianActivity;
 import com.tolabulilm.jadwalkajian.user.AdminActivity;
+import com.tolabulilm.jadwalkajian.user.LoginActivity;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -55,6 +57,9 @@ public class SettingActivity extends AppCompatActivity {
                         break;
                     case 3 : startActivity(new Intent(getApplicationContext(), AboutActivity.class));
                         break;
+                    case 4 :
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 }
             }
         });
