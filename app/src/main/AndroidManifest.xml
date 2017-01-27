@@ -62,6 +62,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tolabulilm.jadwalkajian.setting.SettingActivity" />
         </activity>
+        <activity
+            android:name=".setting.LicenseActivity"
+            android:label="@string/title_activity_lincense"
+            android:parentActivityName=".setting.AboutActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tolabulilm.jadwalkajian.setting.AboutActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian.user;
+package com.tolabulilm.jadwalkajian.kajian;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tolabulilm.jadwalkajian.R;
+
+import java.util.Calendar;
 
 public class KajianViewHolder extends RecyclerView.ViewHolder {
     private final TextView ustadz;
@@ -35,15 +37,15 @@ public class KajianViewHolder extends RecyclerView.ViewHolder {
         this.place.setText(place);
         String date;
         Calendar c = Calendar.getInstance();
-        c.setTimeMillis(millis);
+        c.setTimeInMillis(millis);
         //gunakan simple date format untuk mendapatkan tanggal dari calendar;
     }
 
-    public void getAddButton() {
+    public Button getAddButton() {
         return this.addButton;
     }
 
-    public void getMoreButton() {
+    public Button getMoreButton() {
         return this.moreButton;
     }
 

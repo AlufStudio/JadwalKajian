@@ -7,13 +7,15 @@ package com.tolabulilm.jadwalkajian.user;
 public class User {
     private String id;
     private String email;
+    private String type;
 
     public User() {
     }
 
-    public User(String id, String email) {
+    public User(String id, String email, String type) {
         this.id = id;
         this.email = email;
+        this.type = type;
     }
 
     public String getId() {
@@ -30,5 +32,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

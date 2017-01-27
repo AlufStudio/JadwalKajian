@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         toggleProgressBar();
                         goToMainActivity();
                     } else {
-                        User newUser = new User(fireUser.getUid(), fireUser.getEmail());
+                        User newUser = new User(fireUser.getUid(), fireUser.getEmail(), "user");
                         mRef.child("users").child(fireUser.getUid()).setValue(newUser).
                                 addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -166,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void toggleRegister() {
         if (isLogin) {
-            registerText.setText("Sudah punya akun? Login sekarang");
+            registerText.setText("Kembali ke Login");
             loginButton.setText("Daftar");
             isLogin = false;
         } else {

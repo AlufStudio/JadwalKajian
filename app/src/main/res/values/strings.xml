@@ -13,4 +13,6 @@
     <string name="title_activity_search">Pencarian</string>
     <string name="title_activity_admin">Halaman Admin</string>
     <string name="title_activity_about">Tentang Aplikasi</string>
+    <string name="action_menu">Menu tambahan</string>
+    <string name="title_activity_lincense">Lisensi</string>
 </resources>
