@@ -32,26 +32,26 @@ public class AddKajianActivity extends AppCompatActivity {
     private EditText inputAddress;
     private EditText inputHijri;
     private EditText inputContactNumber;
-    private Toolbar toolbar;
 
     private Button dateButton;
     private Button hourButton;
     private Button submitButton;
     private Spinner spinnerKota;
     private Spinner spinnerTipe;
+    private Toolbar toolbar;
 
     private Kajian kajian;
     private String idKajian;
     private String ustadz;
     private String title;
     private String place;
-    private String address;
-    private String hijri;
-    private String contactNumber;
     private long time;
     private int city;
     private int type;
-    private String status;
+    private String address = "";
+    private String hijri = "";
+    private String contactNumber = "";
+    private String status = "active";
 
     private FirebaseUser fireUser;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -63,20 +63,26 @@ public class AddKajianActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_kajian);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initView();
         handleOnClick();
         authListen();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     //pengecekan empty dibagi menjadi dua bagian yaitu input informasi dasar
     //dan input informasi tambahan
     private void checkEmptyInput() {
-        if(inputUstadz.getText().toString().isEmpty() || inputTitle.getText().toString().isEmpty()) {
+        if(inputUstadz.getText().toString().isEmpty() || inputTitle.getText().toString().isEmpty() ||
+                inputPlace.getText().toString().isEmpty()) {
             inputIsEmpty = true;
-        } else if (inputPlace.getText().toString().isEmpty()) {
+        } else if (city == 0) {
             inputIsEmpty = true;
+            Toast.makeText(this, "Belum memilih kota", Toast.LENGTH_SHORT).show();
+        } else if (type == 0) {
+            inputIsEmpty = true;
+            Toast.makeText(this, "Belum memilih jenis kajian", Toast.LENGTH_SHORT).show();
         } else {
             inputIsEmpty = false;
         }
@@ -87,14 +93,25 @@ public class AddKajianActivity extends AppCompatActivity {
         ustadz = inputUstadz.getText().toString();
         title = inputTitle.getText().toString();
         place = inputPlace.getText().toString();
-        //kurang date, time, type, city
+
+        //city dan tipe
+        type = spinnerTipe.getSelectedItemPosition();
+        city = spinnerKota.getSelectedItemPosition();
+
+        //tanggal dan jam
     }
 
     //mengambil informasi tambahan. harus dihandle jika tidak semua informasi diisi
     private void getAdditionalInputData() {
-        address = inputAddress.getText().toString();
-        hijri = inputHijri.getText().toString();
-        contactNumber = inputContactNumber.getText().toString();
+        if (!inputAddress.getText().toString().isEmpty()) {
+            address = inputAddress.getText().toString();
+        }
+        if (!inputHijri.getText().toString().isEmpty()) {
+            hijri = inputHijri.getText().toString();
+        }
+        if (!inputContactNumber.getText().toString().isEmpty()) {
+            contactNumber = inputContactNumber.getText().toString();
+        }
     }
 
     private void initView() {
@@ -120,11 +137,6 @@ public class AddKajianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkEmptyInput();
-                if (inputIsEmpty) {
-                    Toast.makeText(AddKajianActivity.this, "empty mas", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(AddKajianActivity.this, "primary input empty", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
@@ -218,18 +230,6 @@ public class AddKajianActivity extends AppCompatActivity {
         adapterTipe.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKota.setAdapter(adapterKota);
         spinnerTipe.setAdapter(adapterTipe);
-        spinnerKota.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                city = position;
-        }
-        });
-        spinnerTipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                type = position;
-            }
-        });
     }
 
     private void showDatePicker(int year, int month, int day) {

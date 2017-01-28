@@ -14,12 +14,12 @@ public class AboutActivity extends AppCompatActivity {
 
     private TextView aboutContent;
     private Button licenseButton;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initView();
         handleOnClick();
@@ -27,6 +27,7 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         aboutContent = (TextView)findViewById(R.id.about_content);
         licenseButton = (Button)findViewById(R.id.about_license_button);
     }
@@ -37,6 +38,13 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //go to license activity
                 startActivity(new Intent(getApplicationContext(), LicenseActivity.class));
+            }
+        });
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }

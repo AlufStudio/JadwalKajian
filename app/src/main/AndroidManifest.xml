@@ -34,7 +34,12 @@
         <activity
             android:name=".kajian.AddKajianActivity"
             android:label="@string/title_activity_add_kajian"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".user.AdminActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.tolabulilm.jadwalkajian.user.AdminActivity"/>
+        </activity>
         <activity
             android:name=".kajian.SearchActivity"
             android:label="@string/title_activity_search"
