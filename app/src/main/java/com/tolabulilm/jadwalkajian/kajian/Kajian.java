@@ -10,8 +10,8 @@ public class Kajian {
     private String title;
     private long time;
     private String place;
-    private String city;
-    private String type;
+    private int city;
+    private int type;
     private String address;
     private String status;
     private String hijri;
@@ -21,7 +21,7 @@ public class Kajian {
     }
 
     public Kajian(String id, String ustadz, String title, String place, long time,
-                  String city, String type) {
+                  int city, int type) {
         this.id = id;
         this.ustadz = ustadz;
         this.title = title;
@@ -51,11 +51,11 @@ public class Kajian {
         this.time = time;
     }
 
-    public void setCity(String city) {
+    public void setCity(int city) {
         this.city = city;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 
@@ -95,11 +95,11 @@ public class Kajian {
         return this.place;
     }
 
-    public String getCity() {
+    public int getCity() {
         return this.city;
     }
 
-    public String getType() {
+    public int getType() {
         return this.type;
     }
 

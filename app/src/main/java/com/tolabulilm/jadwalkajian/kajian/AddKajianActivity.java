@@ -3,15 +3,16 @@ package com.tolabulilm.jadwalkajian.kajian;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +37,8 @@ public class AddKajianActivity extends AppCompatActivity {
     private Button dateButton;
     private Button hourButton;
     private Button submitButton;
+    private Spinner spinnerKota;
+    private Spinner spinnerTipe;
 
     private Kajian kajian;
     private String idKajian;
@@ -46,8 +49,8 @@ public class AddKajianActivity extends AppCompatActivity {
     private String hijri;
     private String contactNumber;
     private long time;
-    private String city;
-    private String type;
+    private int city;
+    private int type;
     private String status;
 
     private FirebaseUser fireUser;
@@ -84,6 +87,7 @@ public class AddKajianActivity extends AppCompatActivity {
         ustadz = inputUstadz.getText().toString();
         title = inputTitle.getText().toString();
         place = inputPlace.getText().toString();
+        //kurang date, time, type, city
     }
 
     //mengambil informasi tambahan. harus dihandle jika tidak semua informasi diisi
@@ -104,6 +108,8 @@ public class AddKajianActivity extends AppCompatActivity {
         dateButton = (Button)findViewById(R.id.kajian_button_date);
         hourButton = (Button)findViewById(R.id.kajian_button_hour);
         submitButton = (Button)findViewById(R.id.kajian_button_submit);
+        spinnerKota = (Spinner)findViewById(R.id.kajian_spinner_kota);
+        spinnerTipe = (Spinner)findViewById(R.id.kajian_spinner_tipe);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         progressBar = (ProgressBar)findViewById(R.id.kajian_progress_bar);
     }
@@ -146,10 +152,13 @@ public class AddKajianActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        handleSpinner();
     }
 
     private void uploadKajianToDb(Kajian kajian, FirebaseUser fireUser) {
-        DatabaseReference kajianRef = FirebaseDatabase.getInstance().getReference("admin").child(fireUser.getUid());
+        DatabaseReference kajianRef = FirebaseDatabase.getInstance().getReference("admin").
+                child(fireUser.getUid()).child(kajian.getId());
         kajianRef.setValue(kajian).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -198,6 +207,29 @@ public class AddKajianActivity extends AppCompatActivity {
         } else {
             button.setEnabled(true);
         }
+    }
+
+    private void handleSpinner() {
+        ArrayAdapter<CharSequence> adapterKota = ArrayAdapter.createFromResource(this,
+                R.array.menu_kota, android.R.layout.simple_spinner_item);
+        adapterKota.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapterTipe = ArrayAdapter.createFromResource(this,
+                R.array.tipe_kajian, android.R.layout.simple_spinner_item);
+        adapterTipe.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerKota.setAdapter(adapterKota);
+        spinnerTipe.setAdapter(adapterTipe);
+        spinnerKota.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                city = position;
+        }
+        });
+        spinnerTipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                type = position;
+            }
+        });
     }
 
     private void showDatePicker(int year, int month, int day) {

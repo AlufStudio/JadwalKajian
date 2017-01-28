@@ -56,6 +56,8 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textCapWords"
+                            android:maxLines="1"
                             android:hint="Pembicara atau ustadz"
                             android:id="@+id/kajian_input_ustadz"/>
                     </android.support.design.widget.TextInputLayout>
@@ -65,49 +67,19 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textCapWords"
+                            android:maxLines="1"
                             android:hint="Judul atau tema kajian"
                             android:id="@+id/kajian_input_title"/>
                     </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:tint="#9e9e9e"
-                    android:src="@drawable/ic_event_white_24dp"/>
-                <TextView
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Waktu dan tempat"/>
-            </LinearLayout>
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="4dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textCapWords"
+                            android:maxLines="1"
                             android:hint="Nama tempat atau masjid"
                             android:id="@+id/kajian_input_place"/>
                     </android.support.design.widget.TextInputLayout>
@@ -130,8 +102,30 @@
                             android:id="@+id/kajian_button_hour"
                             style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"/>
                     </LinearLayout>
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2">
+                        <Spinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="16dp"
+                            android:paddingTop="14dp"
+                            android:id="@+id/kajian_spinner_kota"/>
+                        <Spinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="16dp"
+                            android:paddingTop="14dp"
+                            android:id="@+id/kajian_spinner_tipe"/>
+                    </GridLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -170,8 +164,10 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Alamat (opsional)"
-                            android:id="@+id/kajian_input_address"/>
+                            android:inputType="phone"
+                            android:maxLines="1"
+                            android:hint="Nomor kontak (opsional)"
+                            android:id="@+id/kajian_input_contactnumber"/>
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -179,6 +175,8 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textCapWords"
+                            android:maxLines="1"
                             android:hint="Tanggal hijriyah (opsional)"
                             android:id="@+id/kajian_input_hijri"/>
                     </android.support.design.widget.TextInputLayout>
@@ -188,8 +186,10 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Kontak (opsional)"
-                            android:id="@+id/kajian_input_contactnumber"/>
+                            android:inputType="textCapWords|textMultiLine"
+                            android:maxLines="3"
+                            android:hint="Alamat tempat (opsional)"
+                            android:id="@+id/kajian_input_address"/>
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
