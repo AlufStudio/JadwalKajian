@@ -61,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (fireUser != null) {
                     // User is signed in
                     // Go to MainActivity
-                    //Toast.makeText(getApplicationContext(), "user ada", Toast.LENGTH_SHORT).show();
                     if (isLogin) {
                         toggleProgressBar();
                         goToMainActivity();
@@ -79,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + fireUser.getUid());
                 } else {
                     // User is signed out
-                    //Toast.makeText(getApplicationContext(), "user tidak ada", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
 

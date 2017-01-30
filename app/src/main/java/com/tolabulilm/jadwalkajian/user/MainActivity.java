@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        handleOnClick();
     }
 
     @Override
@@ -75,8 +76,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initFirebase() {
+        mRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-        mRef = FirebaseDatabase.getInstance().getReference("jadwal-kajian");
-        kajianRef = mRef.child("kajian");
+    }
+
+    private void authListen() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                fireUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (fireUser != null) {
+                    displayJadwalKajian(fireUser)
+                } else {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                }
+            }
+        };
+    }
+
+    private void displayJadwalKajian(FirebaseUser fireUser) {
+        kajianRef = mRef.child("users").child(fireUser.getUid()).child("jadwal");
+        Query query = mRef.orderByChild("time");
     }
 }

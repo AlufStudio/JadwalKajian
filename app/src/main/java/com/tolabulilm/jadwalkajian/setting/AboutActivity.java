@@ -27,7 +27,7 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
         aboutContent = (TextView)findViewById(R.id.about_content);
         licenseButton = (Button)findViewById(R.id.about_license_button);
     }

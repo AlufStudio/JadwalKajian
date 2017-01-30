@@ -58,7 +58,6 @@ public class SettingActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mAuth = FirebaseAuth.getInstance();
         authListen();
         setupList();
     }
@@ -78,7 +77,8 @@ public class SettingActivity extends AppCompatActivity {
                             Toast.makeText(SettingActivity.this, "Hanya admin yang bisa masuk", Toast.LENGTH_SHORT).show();
                         }
                         break;
-                    case 4 : startActivity(new Intent(getApplicationContext(), AboutActivity.class));
+                    case 4 :
+                        startActivity(new Intent(getApplicationContext(), AboutActivity.class));
                         break;
                     case 5 :
                         mAuth.signOut();
@@ -88,6 +88,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void authListen() {
+        mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -109,8 +110,6 @@ public class SettingActivity extends AppCompatActivity {
                 if (dataSnapshot != null) {
                     user = dataSnapshot.getValue(User.class);
                     isAdmin = user.getType().equals("admin");
-                } else {
-                    isAdmin = false;
                 }
             }
 

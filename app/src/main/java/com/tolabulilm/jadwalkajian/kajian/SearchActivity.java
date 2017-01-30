@@ -61,12 +61,14 @@ public class SearchActivity extends AppCompatActivity {
     private void initView() {
         spinnerKota = (Spinner)findViewById(R.id.search_spinner_kota);
         spinnerTipe = (Spinner)findViewById(R.id.search_spinner_tipe);
+
         ArrayAdapter<CharSequence> adapterKota = ArrayAdapter.createFromResource(this,
                 R.array.menu_kota, android.R.layout.simple_spinner_item);
         adapterKota.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ArrayAdapter<CharSequence> adapterTipe = ArrayAdapter.createFromResource(this,
                 R.array.tipe_kajian, android.R.layout.simple_spinner_item);
         adapterTipe.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
         spinnerKota.setAdapter(adapterKota);
         spinnerTipe.setAdapter(adapterTipe);
     }
