@@ -137,6 +137,9 @@ public class AddKajianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkEmptyInput();
+                getPrimaryInputData();
+                getAdditionalInputData();
+                uploadKajianToDb(kajian, fireUser);
             }
         });
 
@@ -238,5 +241,9 @@ public class AddKajianActivity extends AppCompatActivity {
 
     private void showTimerPicker(int hour, int minute) {
 
+    }
+
+    private void createKajian(FirebaseUser fireUser) {
+        kajian = new Kajian(fireUser.getUid(), ustadz, title, place, time, city, type);
     }
 }
