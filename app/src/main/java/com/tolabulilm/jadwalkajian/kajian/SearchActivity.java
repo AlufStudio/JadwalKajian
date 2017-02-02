@@ -20,11 +20,13 @@ public class SearchActivity extends AppCompatActivity {
 
     private Spinner spinnerKota;
     private Spinner spinnerTipe;
+    private RecyclerView recyclerView;
     private Toolbar toolbar;
     private int city;
     private int type;
     private DatabaseReference kajianRef;
     private Query query;
+    private FirebaseIndexRecyclerAdapter firebaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class SearchActivity extends AppCompatActivity {
     private void initView() {
         spinnerKota = (Spinner)findViewById(R.id.search_spinner_kota);
         spinnerTipe = (Spinner)findViewById(R.id.search_spinner_tipe);
+        recyclerView = (RecyclerView)findViewById(R.id.search_recycler);
 
         ArrayAdapter<CharSequence> adapterKota = ArrayAdapter.createFromResource(this,
                 R.array.menu_kota, android.R.layout.simple_spinner_item);
@@ -97,5 +100,25 @@ public class SearchActivity extends AppCompatActivity {
     private void setQueryFromSpinner(int city, int type) {
         query = kajianRef.orderByChild("city").equalTo(city);
         query = query.orderByChild("type").equalTo(type);
+    }
+
+    private void displaySearchResult(Query query) {
+        firebaseAdapter = new FirebaseIndexRecyclerAdapter<Kajian, KajianViewHolder>(
+            Kajian.class,
+            R.layout.card_kajian,
+            KajianViewHolder.class,
+            query,
+            kajianRef
+        ) {
+            @Override
+            protected void populateViewHolder(KajianViewHolder viewHolder, Kajian model, int position) {
+                viewHolder.setPrimaryInfo(model.getUstadz(), model.getTitle(), model.getPlace(),
+                model.getHijri(), model.getTime());
+                viewHolder.setAddtitionalInfo(model.getAddress(), model.getContactNumber());
+            }
+        };
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(firebaseAdapter);
     }
 }
