@@ -90,6 +90,30 @@ public class SearchActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        spinnerKota.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                showResult();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
+
+        spinnerTipe.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                showResult();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+
+            }
+        });
     }
 
     private void getSpinnerPosition() {
@@ -115,10 +139,28 @@ public class SearchActivity extends AppCompatActivity {
                 viewHolder.setPrimaryInfo(model.getUstadz(), model.getTitle(), model.getPlace(),
                 model.getHijri(), model.getTime());
                 viewHolder.setAddtitionalInfo(model.getAddress(), model.getContactNumber());
+                viewHolder.getAddButton().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //tambahkan kajian terpilih ke jadwal pengguna
+                    }
+                });
+                viewHolder.getMoreButton().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //tampilkan info lebih rinci
+                    }
+                })
             }
         };
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(firebaseAdapter);
+    }
+
+    private void showResult() {
+        getSpinnerPosition();
+        setQueryFromSpinner(city, type);
+        displaySearchResult(query);
     }
 }
