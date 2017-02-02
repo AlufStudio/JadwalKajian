@@ -35,9 +35,16 @@ public class KajianViewHolder extends RecyclerView.ViewHolder {
         this.ustadz.setText(ustadz);
         this.title.setText(title);
         this.place.setText(place);
-        String date;
+        String dateText;
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(millis);
+        Date date = c.getTime();
+        if (hijri.length() != 0) {
+            dateText = hijri + " / "
+        }
+        SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy", Locale.getDefault());
+        dateText = dateText + format.format(date);
+        this.date.setText(dateText);
         //gunakan simple date format untuk mendapatkan tanggal dari calendar;
     }
 
