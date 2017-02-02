@@ -21,6 +21,10 @@ public class SearchActivity extends AppCompatActivity {
     private Spinner spinnerKota;
     private Spinner spinnerTipe;
     private Toolbar toolbar;
+    private int city;
+    private int type;
+    private DatabaseReference kajianRef;
+    private Query query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +72,11 @@ public class SearchActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterTipe = ArrayAdapter.createFromResource(this,
                 R.array.tipe_kajian, android.R.layout.simple_spinner_item);
         adapterTipe.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        
+
         spinnerKota.setAdapter(adapterKota);
         spinnerTipe.setAdapter(adapterTipe);
+
+        kajianRef = FirebaseDatabase.getInstance().getReference("kajian");
     }
 
     private void handleOnClick() {
@@ -81,5 +87,15 @@ public class SearchActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+    }
+
+    private void getSpinnerPosition() {
+        city = spinnerKota.getSelectedItemPosition();
+        type = spinnerTipe.getSelectedItemPosition();
+    }
+
+    private void setQueryFromSpinner(int city, int type) {
+        query = kajianRef.orderByChild("city").equalTo(city);
+        query = query.orderByChild("type").equalTo(type);
     }
 }
