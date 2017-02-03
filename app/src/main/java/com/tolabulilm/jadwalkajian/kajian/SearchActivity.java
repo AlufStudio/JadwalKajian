@@ -5,14 +5,21 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.firebase.ui.database.FirebaseIndexRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.tolabulilm.jadwalkajian.R;
 import com.tolabulilm.jadwalkajian.setting.SettingActivity;
 
@@ -91,7 +98,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        spinnerKota.setOnItemSelectedListener(new OnItemSelectedListener() {
+        spinnerKota.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 showResult();
@@ -103,7 +110,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        spinnerTipe.setOnItemSelectedListener(new OnItemSelectedListener() {
+        spinnerTipe.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 showResult();
@@ -139,18 +146,18 @@ public class SearchActivity extends AppCompatActivity {
                 viewHolder.setPrimaryInfo(model.getUstadz(), model.getTitle(), model.getPlace(),
                 model.getHijri(), model.getTime());
                 viewHolder.setAddtitionalInfo(model.getAddress(), model.getContactNumber());
-                viewHolder.getAddButton().setOnClickListener(new OnClickListener() {
+                viewHolder.getAddButton().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //tambahkan kajian terpilih ke jadwal pengguna
                     }
                 });
-                viewHolder.getMoreButton().setOnClickListener(new OnClickListener() {
+                viewHolder.getMoreButton().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //tampilkan info lebih rinci
                     }
-                })
+                });
             }
         };
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

@@ -1,10 +1,22 @@
 package com.tolabulilm.jadwalkajian.donasi;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.tolabulilm.jadwalkajian.R;
+
 public class InfoDonasiActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private DatabaseReference donasiRef;
     private FirebaseRecyclerAdapter firebaseAdapter;
+    private Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +45,7 @@ public class InfoDonasiActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(DonasiViewHolder viewHolder, Donasi model, int position) {
                 viewHolder.setView(model);
-                viewHolder.setProgressBar(model.getDonated, model.getNeeded);
+                viewHolder.setProgressBar(model.getDonated(), model.getNeeded());
             }
         };
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

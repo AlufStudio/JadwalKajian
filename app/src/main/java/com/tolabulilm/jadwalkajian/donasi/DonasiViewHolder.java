@@ -1,5 +1,11 @@
 package com.tolabulilm.jadwalkajian.donasi;
 
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
+
+import com.tolabulilm.jadwalkajian.R;
+
 public class DonasiViewHolder extends RecyclerView.ViewHolder {
     private final TextView title;
     private final TextView description;
@@ -11,13 +17,13 @@ public class DonasiViewHolder extends RecyclerView.ViewHolder {
 
     public DonasiViewHolder(View itemView) {
         super(itemView);
-        title = (TextView)itemView.findViewById(R.id.info_donasi_title);
-        description = (TextView)itemView.findViewById(R.id.info_donasi_description);
-        donated = (TextView)itemView.findViewById(R.id.info_donasi_donated);
-        needed = (TextView)itemView.findViewById(R.id.info_donasi_needed);
-        bankName = (TextView)itemView.findViewById(R.id.info_donasi_bank_name);
-        bankNumber = (TextView)itemView.findViewById(R.id.info_donasi_bank_number);
-        accName = (TextView)itemView.findViewById(R.id.info_donasi_acc_name);
+        title = (TextView)itemView.findViewById(R.id.card_donasi_title);
+        description = (TextView)itemView.findViewById(R.id.card_donasi_description);
+        donated = (TextView)itemView.findViewById(R.id.card_donasi_donated);
+        needed = (TextView)itemView.findViewById(R.id.card_donasi_needed);
+        bankName = (TextView)itemView.findViewById(R.id.card_donasi_bank_name);
+        bankNumber = (TextView)itemView.findViewById(R.id.card_donasi_bank_number);
+        accName = (TextView)itemView.findViewById(R.id.card_donasi_acc_name);
     }
 
     public void setView(Donasi donasi) {

@@ -19,5 +19,5 @@
         android:id="@+id/search_recycler"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:clipToPadding="false"
+        android:clipToPadding="false"/>
 </LinearLayout>

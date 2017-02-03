@@ -2,6 +2,7 @@ package com.tolabulilm.jadwalkajian.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.tolabulilm.jadwalkajian.R;
 import com.tolabulilm.jadwalkajian.kajian.SearchActivity;
 import com.tolabulilm.jadwalkajian.setting.SettingActivity;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference kajianRef;
     private FirebaseUser fireUser;
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     private FloatingActionButton fab;
 
     @Override
@@ -86,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 fireUser = FirebaseAuth.getInstance().getCurrentUser();
                 if (fireUser != null) {
-                    displayJadwalKajian(fireUser)
+                    displayJadwalKajian(fireUser);
                 } else {
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 }

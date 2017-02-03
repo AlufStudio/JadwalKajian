@@ -7,7 +7,10 @@ import android.widget.TextView;
 
 import com.tolabulilm.jadwalkajian.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class KajianViewHolder extends RecyclerView.ViewHolder {
     private final TextView ustadz;
@@ -35,12 +38,12 @@ public class KajianViewHolder extends RecyclerView.ViewHolder {
         this.ustadz.setText(ustadz);
         this.title.setText(title);
         this.place.setText(place);
-        String dateText;
+        String dateText = "";
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(millis);
         Date date = c.getTime();
         if (hijri.length() != 0) {
-            dateText = hijri + " / "
+            dateText = hijri + " / ";
         }
         SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy", Locale.getDefault());
         dateText = dateText + format.format(date);

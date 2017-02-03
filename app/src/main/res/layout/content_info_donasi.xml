@@ -16,5 +16,5 @@
         android:id="@+id/info_donasi_recycler"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:clipToPadding="false"
+        android:clipToPadding="false"/>
 </LinearLayout>
