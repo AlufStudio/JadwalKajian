@@ -189,8 +189,7 @@ public class AddKajianActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     toggleProgress();
-                    Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                    NavUtils.navigateUpTo(AddKajianActivity.this, intent);
+                    onBackPressed();
                     Toast.makeText(AddKajianActivity.this, "Jadwal kajian berhasil dibuat", Toast.LENGTH_SHORT).show();
                 } else {
                     toggleProgress();
