@@ -6,6 +6,7 @@ package com.tolabulilm.jadwalkajian.kajian;
 
 public class Kajian {
     private String id;
+    private String adminId;
     private String ustadz;
     private String title;
     private long time;
@@ -20,15 +21,20 @@ public class Kajian {
     public Kajian() {
     }
 
-    public Kajian(String id, String ustadz, String title, String place, long time,
-                  int city, int type) {
+    public Kajian(String id, String adminId, String ustadz, String title, String place, long time,
+                  int city, int type, String address, String hijri, String contactNumber, String status) {
         this.id = id;
+        this.adminId = adminId;
         this.ustadz = ustadz;
         this.title = title;
         this.place = place;
         this.time = time;
         this.city = city;
         this.type = type;
+        this.address = address;
+        this.hijri = hijri;
+        this.contactNumber = contactNumber;
+        this.status = status;
     }
 
     public void setUstadz(String ustadz) {
@@ -37,6 +43,14 @@ public class Kajian {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
     }
 
     public void setTitle(String title) {

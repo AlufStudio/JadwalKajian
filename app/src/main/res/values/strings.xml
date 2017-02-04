@@ -2,7 +2,7 @@
     <string name="app_name">Jadwal Kajian</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_input">InputActivity</string>
-    <string name="title_activity_login">Login</string>
+    <string name="title_activity_login">Jadwal Kajian</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>

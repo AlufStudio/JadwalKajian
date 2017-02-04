@@ -41,8 +41,8 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        handleOnClick();
         initView();
+        handleOnClick();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -130,7 +130,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private void setQueryFromSpinner(int city, int type) {
         query = kajianRef.orderByChild("city").equalTo(city);
-        query = query.orderByChild("type").equalTo(type);
     }
 
     private void displaySearchResult(Query query) {

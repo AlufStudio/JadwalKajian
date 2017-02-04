@@ -1,13 +1,13 @@
-package com.tolabulilm.jadwalkajian.kajian;
+package com.tolabulilm.jadwalkajian.setting.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +22,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tolabulilm.jadwalkajian.R;
-import com.tolabulilm.jadwalkajian.user.AdminActivity;
+import com.tolabulilm.jadwalkajian.kajian.Kajian;
+
+import java.util.Calendar;
 
 public class AddKajianActivity extends AppCompatActivity {
 
@@ -45,7 +47,7 @@ public class AddKajianActivity extends AppCompatActivity {
     private String ustadz;
     private String title;
     private String place;
-    private long time;
+    private long time = Calendar.getInstance().getTimeInMillis();
     private int city;
     private int type;
     private String address = "";
@@ -55,6 +57,7 @@ public class AddKajianActivity extends AppCompatActivity {
 
     private FirebaseUser fireUser;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
 
     private boolean inputIsEmpty = true;
     private ProgressBar progressBar;
@@ -65,6 +68,7 @@ public class AddKajianActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_kajian);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mAuth = FirebaseAuth.getInstance();
         initView();
         handleOnClick();
         authListen();
@@ -74,6 +78,10 @@ public class AddKajianActivity extends AppCompatActivity {
     //pengecekan empty dibagi menjadi dua bagian yaitu input informasi dasar
     //dan input informasi tambahan
     private void checkEmptyInput() {
+        //city dan tipe
+        type = spinnerTipe.getSelectedItemPosition();
+        city = spinnerKota.getSelectedItemPosition();
+
         if(inputUstadz.getText().toString().isEmpty() || inputTitle.getText().toString().isEmpty() ||
                 inputPlace.getText().toString().isEmpty()) {
             inputIsEmpty = true;
@@ -93,10 +101,6 @@ public class AddKajianActivity extends AppCompatActivity {
         ustadz = inputUstadz.getText().toString();
         title = inputTitle.getText().toString();
         place = inputPlace.getText().toString();
-
-        //city dan tipe
-        type = spinnerTipe.getSelectedItemPosition();
-        city = spinnerKota.getSelectedItemPosition();
 
         //tanggal dan jam
     }
@@ -137,9 +141,15 @@ public class AddKajianActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkEmptyInput();
-                getPrimaryInputData();
-                getAdditionalInputData();
-                uploadKajianToDb(kajian, fireUser);
+                if (!inputIsEmpty) {
+                    toggleProgress();
+                    getPrimaryInputData();
+                    getAdditionalInputData();
+                    createKajian();
+                    uploadKajianToDb();
+                } else {
+                    Toast.makeText(AddKajianActivity.this, "Data belum lengkap", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -148,7 +158,7 @@ public class AddKajianActivity extends AppCompatActivity {
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showDatePicker();
             }
         });
 
@@ -156,7 +166,7 @@ public class AddKajianActivity extends AppCompatActivity {
         hourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                showTimerPicker();
             }
         });
 
@@ -171,9 +181,8 @@ public class AddKajianActivity extends AppCompatActivity {
         handleSpinner();
     }
 
-    private void uploadKajianToDb(Kajian kajian, FirebaseUser fireUser) {
-        DatabaseReference kajianRef = FirebaseDatabase.getInstance().getReference("admin").
-                child(fireUser.getUid()).child(kajian.getId());
+    private void uploadKajianToDb() {
+        DatabaseReference kajianRef = FirebaseDatabase.getInstance().getReference("kajian").child(idKajian);
         kajianRef.setValue(kajian).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -208,20 +217,12 @@ public class AddKajianActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 fireUser = FirebaseAuth.getInstance().getCurrentUser();
                 if (fireUser != null) {
-                    toggleEnableButton(submitButton);
+                    submitButton.setEnabled(true);
                 } else {
-                    toggleEnableButton(submitButton);
+                    submitButton.setEnabled(false);
                 }
             }
         };
-    }
-
-    private void toggleEnableButton(Button button) {
-        if (button.isEnabled()) {
-            button.setEnabled(false);
-        } else {
-            button.setEnabled(true);
-        }
     }
 
     private void handleSpinner() {
@@ -235,15 +236,33 @@ public class AddKajianActivity extends AppCompatActivity {
         spinnerTipe.setAdapter(adapterTipe);
     }
 
-    private void showDatePicker(int year, int month, int day) {
-
+    private void showDatePicker() {
+        DialogFragment dialog = new DatePickDialog();
+        dialog.show(getSupportFragmentManager(), "Date pick");
     }
 
-    private void showTimerPicker(int hour, int minute) {
-
+    private void showTimerPicker() {
+        DialogFragment dialog = new TimePickDialog();
+        dialog.show(getSupportFragmentManager(), "Time pick");
     }
 
-    private void createKajian(FirebaseUser fireUser) {
-        kajian = new Kajian(fireUser.getUid(), ustadz, title, place, time, city, type);
+    private void createKajian() {
+        idKajian = FirebaseDatabase.getInstance().getReference("kajian").push().getKey();
+        kajian = new Kajian(idKajian, fireUser.getUid(), ustadz, title, place, time, city, type,
+                address, hijri, contactNumber, status);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }

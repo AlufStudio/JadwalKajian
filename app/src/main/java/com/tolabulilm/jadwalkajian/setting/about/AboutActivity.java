@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian.setting;
+package com.tolabulilm.jadwalkajian.setting.about;
 
 
 import android.content.Intent;
@@ -20,8 +20,8 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        setSupportActionBar(toolbar);
         initView();
+        setSupportActionBar(toolbar);
         handleOnClick();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

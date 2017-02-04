@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian.setting;
+package com.tolabulilm.jadwalkajian.setting.about;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

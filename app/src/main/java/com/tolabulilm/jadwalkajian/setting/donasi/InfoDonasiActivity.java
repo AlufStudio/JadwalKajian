@@ -1,10 +1,11 @@
-package com.tolabulilm.jadwalkajian.donasi;
+package com.tolabulilm.jadwalkajian.setting.donasi;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +25,12 @@ public class InfoDonasiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_donasi);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         initView();
         initFirebase();

@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian.donasi;
+package com.tolabulilm.jadwalkajian.setting.donasi;
 
 public class Donasi {
     private String title;

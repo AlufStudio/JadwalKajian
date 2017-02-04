@@ -3,14 +3,11 @@ package com.tolabulilm.jadwalkajian.setting;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,8 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tolabulilm.jadwalkajian.R;
-import com.tolabulilm.jadwalkajian.kajian.AddKajianActivity;
-import com.tolabulilm.jadwalkajian.user.AdminActivity;
+import com.tolabulilm.jadwalkajian.setting.about.AboutActivity;
+import com.tolabulilm.jadwalkajian.setting.donasi.InfoDonasiActivity;
+import com.tolabulilm.jadwalkajian.setting.admin.AdminActivity;
 import com.tolabulilm.jadwalkajian.user.LoginActivity;
 import com.tolabulilm.jadwalkajian.user.User;
 
@@ -70,9 +68,14 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
+                    case 1 :
+                        startActivity(new Intent(getApplicationContext(), InfoDonasiActivity.class));
+                        break;
                     case 3 :
                         if (isAdmin) {
-                            startActivity(new Intent(getApplicationContext(), AdminActivity.class));
+                            Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                            intent.putExtra("adminId", fireUser.getUid());
+                            startActivity(intent);
                         } else {
                             Toast.makeText(SettingActivity.this, "Hanya admin yang bisa masuk", Toast.LENGTH_SHORT).show();
                         }
@@ -82,6 +85,7 @@ public class SettingActivity extends AppCompatActivity {
                         break;
                     case 5 :
                         mAuth.signOut();
+                        break;
                 }
             }
         });

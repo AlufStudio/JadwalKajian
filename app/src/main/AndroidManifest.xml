@@ -32,13 +32,13 @@
                 android:value="com.tolabulilm.jadwalkajian.user.MainActivity" />
         </activity>
         <activity
-            android:name=".kajian.AddKajianActivity"
+            android:name=".setting.admin.AddKajianActivity"
             android:label="@string/title_activity_add_kajian"
             android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".user.AdminActivity">
+            android:parentActivityName=".setting.admin.AdminActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tolabulilm.jadwalkajian.user.AdminActivity"/>
+                android:value="com.tolabulilm.jadwalkajian.setting.admin.AdminActivity"/>
         </activity>
         <activity
             android:name=".kajian.SearchActivity"
@@ -50,7 +50,7 @@
                 android:value="com.tolabulilm.jadwalkajian.user.MainActivity" />
         </activity>
         <activity
-            android:name=".user.AdminActivity"
+            android:name=".setting.admin.AdminActivity"
             android:label="@string/title_activity_admin"
             android:parentActivityName=".setting.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -59,7 +59,7 @@
                 android:value="com.tolabulilm.jadwalkajian.setting.SettingActivity" />
         </activity>
         <activity
-            android:name=".setting.AboutActivity"
+            android:name=".setting.about.AboutActivity"
             android:label="@string/title_activity_about"
             android:parentActivityName=".setting.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -68,16 +68,16 @@
                 android:value="com.tolabulilm.jadwalkajian.setting.SettingActivity" />
         </activity>
         <activity
-            android:name=".setting.LicenseActivity"
+            android:name=".setting.about.LicenseActivity"
             android:label="@string/title_activity_lincense"
-            android:parentActivityName=".setting.AboutActivity"
+            android:parentActivityName=".setting.about.AboutActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.tolabulilm.jadwalkajian.setting.AboutActivity" />
+                android:value="com.tolabulilm.jadwalkajian.setting.about.AboutActivity" />
         </activity>
         <activity
-            android:name=".setting.InfoDonasiActivity"
+            android:name=".setting.donasi.InfoDonasiActivity"
             android:label="@string/title_activity_info_donasi"
             android:parentActivityName=".setting.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar">

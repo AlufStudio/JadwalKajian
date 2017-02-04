@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian.kajian;
+package com.tolabulilm.jadwalkajian.setting.admin;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;

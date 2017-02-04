@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian.donasi;
+package com.tolabulilm.jadwalkajian.setting.donasi;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
