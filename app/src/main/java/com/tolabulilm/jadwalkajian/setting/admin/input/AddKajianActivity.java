@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian.setting.admin;
+package com.tolabulilm.jadwalkajian.setting.admin.input;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tolabulilm.jadwalkajian.R;
 import com.tolabulilm.jadwalkajian.kajian.Kajian;
+import com.tolabulilm.jadwalkajian.setting.admin.AdminActivity;
 
 import java.util.Calendar;
 

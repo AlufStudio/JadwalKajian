@@ -15,8 +15,6 @@
         android:layout_height="match_parent"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
         android:clipToPadding="false"
         android:id="@+id/admin_recycler"/>
 </LinearLayout>

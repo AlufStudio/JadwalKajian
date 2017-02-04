@@ -32,7 +32,7 @@
                 android:value="com.tolabulilm.jadwalkajian.user.MainActivity" />
         </activity>
         <activity
-            android:name=".setting.admin.AddKajianActivity"
+            android:name=".setting.admin.input.AddKajianActivity"
             android:label="@string/title_activity_add_kajian"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".setting.admin.AdminActivity">

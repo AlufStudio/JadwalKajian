@@ -1,4 +1,4 @@
-package com.tolabulilm.jadwalkajian.setting.admin;
+package com.tolabulilm.jadwalkajian.setting.admin.input;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
