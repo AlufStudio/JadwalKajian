@@ -77,7 +77,7 @@
                 android:value="com.tolabulilm.jadwalkajian.setting.about.AboutActivity" />
         </activity>
         <activity
-            android:name=".setting.donasi.InfoDonasiActivity"
+            android:name=".setting.donasi.DonasiActivity"
             android:label="@string/title_activity_info_donasi"
             android:parentActivityName=".setting.SettingActivity"
             android:theme="@style/AppTheme.NoActionBar">

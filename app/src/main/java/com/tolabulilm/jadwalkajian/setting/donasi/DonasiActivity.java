@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tolabulilm.jadwalkajian.R;
 
-public class InfoDonasiActivity extends AppCompatActivity {
+public class DonasiActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private DatabaseReference donasiRef;

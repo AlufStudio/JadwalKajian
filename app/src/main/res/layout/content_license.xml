@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.tolabulilm.jadwalkajian.setting.about.LicenseActivity"
-    tools:showIn="@layout/activity_lincense"
+    tools:showIn="@layout/activity_license"
     android:orientation="vertical">
 
     <ExpandableListView

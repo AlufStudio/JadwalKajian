@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tolabulilm.jadwalkajian.R;
 import com.tolabulilm.jadwalkajian.setting.about.AboutActivity;
-import com.tolabulilm.jadwalkajian.setting.donasi.InfoDonasiActivity;
+import com.tolabulilm.jadwalkajian.setting.donasi.DonasiActivity;
 import com.tolabulilm.jadwalkajian.setting.admin.AdminActivity;
 import com.tolabulilm.jadwalkajian.user.LoginActivity;
 import com.tolabulilm.jadwalkajian.user.User;
@@ -69,7 +69,7 @@ public class SettingActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 1 :
-                        startActivity(new Intent(getApplicationContext(), InfoDonasiActivity.class));
+                        startActivity(new Intent(getApplicationContext(), DonasiActivity.class));
                         break;
                     case 3 :
                         if (isAdmin) {
